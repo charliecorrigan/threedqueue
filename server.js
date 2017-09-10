@@ -25,7 +25,7 @@ app.set('view engine', 'ejs');
 // app.use(passport.session());
 // app.use(flash());
 
-// require('./app/routes.js')(app, passport);
+require('./app/routes.js')(app, passport);
 
 app.listen(port);
 console.log('The magic happens on port ' + port);
