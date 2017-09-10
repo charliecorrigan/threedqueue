@@ -15,7 +15,10 @@ module.exports = function(app, passport) {
       app.get('/login', function(req, res) {
   
           // render the page and pass in any flash data if it exists
-          res.render('login.ejs', { message: req.flash('loginMessage') }); 
+          // res.render('login.ejs', { message: req.flash('loginMessage') });
+          // flash data seems like it might be setup in passport, which doesn't exist yet. Testing without flash
+          res.render('login.ejs');
+          
       });
   
       // process the login form
@@ -28,7 +31,8 @@ module.exports = function(app, passport) {
       app.get('/signup', function(req, res) {
   
           // render the page and pass in any flash data if it exists
-          res.render('signup.ejs', { message: req.flash('signupMessage') });
+          // res.render('signup.ejs', { message: req.flash('signupMessage') });
+          res.render('signup.ejs')
       });
   
       // process the signup form
