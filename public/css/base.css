@@ -4,7 +4,7 @@ body {
   border: 0px;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  background-image: url("../images/splatter.png");
+  background-image: url("/images/splatter.png");
   background-size:cover;
   background-repeat: no-repeat;
 }
@@ -52,29 +52,30 @@ nav {
   padding-right: 1%;
   padding-bottom: 1%;
   background-color: #00B8EC;
-  a {
-    color: #ffffff;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
+}
+nav > a {
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
 
-  a:hover {
-    color: #FFCB05;
-  }
-  ul {
-    width: 300px;
-    list-style: none;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-flow: row nowrap;
-    justify-content: space-around;
+nav > a:hover {
+  color: #FFCB05;
+}
 
-    li {
-      text-align: center;
-      flex: 1 1 auto;
-    }
-  }
+nav > ul {
+  width: 300px;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  justify-content: space-around;
+
+}
+nav > li {
+  text-align: center;
+  flex: 1 1 auto;
 }
