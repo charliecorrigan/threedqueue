@@ -1,4 +1,7 @@
-var bcrypt   = require('bcrypt-nodejs');
+const bcrypt   = require('bcrypt-nodejs');
+const environment = process.env.NODE_ENV || "development"
+const configuration = require("../../knexfile")[environment]
+const database = require('knex')(configuration)
 
 class Admin {
   constructor(){
@@ -10,12 +13,27 @@ class Admin {
     this.organization         = "";
   }
 
+  static findById(){
+    console.log("In FindById")
+  }
+
+  static findOne(email){
+    return database.raw(`SELECT * FROM admins WHERE email=(?)`, [email])
+  }
+
   generateHash(password){
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
   }
 
-  validPassword(password){
-    return bcrypt.compareSync(password, this.password);
+  static validPassword(loginPassword, passwordOnFile){
+    return bcrypt.compareSync(loginPassword, passwordOnFile);
+  }
+
+  save(){
+    console.log("In the save function, checking this...")
+    console.log(this.email)
+    console.log(this.password)
+    return database.raw('INSERT INTO admins (email, password, created_at) VALUES  (?, ?, ?) RETURNING *', [this.email, this.password, new Date])
   }
 }
 
