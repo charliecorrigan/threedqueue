@@ -2,13 +2,29 @@
   "name": "threedqueue",
   "version": "1.0.0",
   "description": "A 3D printer queue for makerspaces",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.4"
+    "bcrypt-nodejs": "latest",
+    "body-parser": "~1.0.0",
+    "connect-flash": "~0.1.1",
+    "cookie-parser": "~1.0.0",
+    "ejs": "~0.8.5",
+    "express": "^4.15.4",
+    "express-session": "~1.0.0",
+    "knex": "^0.13.0",
+    "method-override": "~1.0.0",
+    "morgan": "~1.0.0",
+    "passport": "~0.1.17",
+    "passport-local": "~0.1.6",
+    "pg": "^7.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.0"
   }
 }
