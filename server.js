@@ -17,7 +17,7 @@ require('./config/passport')(passport);
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser());
-
+app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
 app.use(session({ secret: 'thisshouldprobablybesavedinanenvfile' }));
