@@ -59,7 +59,7 @@ nav > a {
   text-transform: uppercase;
 }
 
-nav > a:hover {
+nav a:hover {
   color: #FFCB05;
 }
 
