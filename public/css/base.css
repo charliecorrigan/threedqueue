@@ -15,6 +15,7 @@ h1 {
   text-transform: uppercase;
   -webkit-column-span: all; /* Chrome, Safari, Opera */
   column-span: all;
+  padding-bottom: 10px;
 }
 
 h2 {
