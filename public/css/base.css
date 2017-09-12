@@ -78,7 +78,7 @@ nav li {
 }
 
 .button {
-  background-color: #00B8EC; /* Green */
+  background-color: #00B8EC;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -92,4 +92,17 @@ nav li {
 
 a:hover {
   color: #FFCB05;
+}
+
+.alert {
+  background-color: magenta;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
