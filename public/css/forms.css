@@ -76,16 +76,17 @@
   border-radius: 2px;
 
 }
-    .signup button:hover {
-      color: #FFCB05;
-      cursor: pointer;
-    }
+
+form button:hover {
+  color: #FFCB05;
+  cursor: pointer;
+}
 
 .flex-inner .form-group {
   width: 100px;
 }
 
-.signup input {
+form input {
   font-size: 14px;
   border: 1px solid #C1BEBE !important;
   background-color: #EFEBEB;
@@ -95,7 +96,7 @@
   padding-bottom: 5px;
 }
 
-.signup button {
+.form button {
   font-weight: 300;
   letter-spacing: .09em;
   text-transform: uppercase;
