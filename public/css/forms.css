@@ -1,0 +1,102 @@
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.container * {
+  box-sizing: border-box;
+}
+
+.flex-outer,
+.flex-inner {
+  list-style-type: none;
+  padding: 0;
+}
+
+.flex-outer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.flex-outer .form-group,
+.flex-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.flex-inner {
+  padding: 0 8px;
+  justify-content: space-between;
+}
+
+.flex-outer > li:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.flex-outer .form-group label,
+.flex-outer .form-group p {
+  padding: 8px;
+  // font-weight: 300;
+  // letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.flex-outer > .form-group > label,
+.flex-outer .form-group p {
+  flex: 1 0 120px;
+  max-width: 400px;
+}
+
+.flex-outer > .form-group > label + *,
+.flex-inner {
+  flex: 1 0 220px;
+}
+
+.flex-outer .form-group p {
+  margin: 0;
+}
+
+.flex-outer .form-group input:not([type='checkbox']),
+.flex-outer .form-group textarea {
+  padding: 15px;
+  border: none;
+}
+
+.flex-outer .form-group button {
+  margin-left: auto;
+  padding: 8px 16px;
+  border: none;
+  background: #00B8EC;
+  font-size: 16px;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  // letter-spacing: .09em;
+  border-radius: 2px;
+
+}
+    .signup button:hover {
+      color: #FFCB05;
+      cursor: pointer;
+    }
+
+.flex-inner .form-group {
+  width: 100px;
+}
+
+.signup input {
+  font-size: 14px;
+  border: 1px solid #C1BEBE !important;
+  background-color: #EFEBEB;
+}
+
+.form-group {
+  padding-bottom: 5px;
+}
+
+.signup button {
+  font-weight: 300;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
