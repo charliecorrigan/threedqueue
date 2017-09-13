@@ -1,0 +1,30 @@
+.sidebar {
+  width: 20%;
+  float: left;
+  background-color: #00B8EC;
+  height: 800px;
+  overflow: hidden;
+  color: white;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.sidebar-nav {
+  float:left;
+  padding: none;
+  margin: none;
+  list-style: none;
+}
+
+.sidebar-links {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20%;
+}
+
+.sidebar-links:hover {
+  color: #FFCB05;
+  cursor: pointer;
+}
