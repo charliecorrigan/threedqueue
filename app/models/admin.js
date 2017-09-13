@@ -22,8 +22,9 @@ class Admin {
   }
 
   static updateToken(id, token){
-    let tokenHash = bcrypt.hashSync(token, bcrypt.genSaltSync(8), null)
-    return database.raw(`UPDATE admins SET dbToken=(?) WHERE id=(?) RETURNING *`, [tokenHash, id])
+    console.log("THe token is...")
+    console.log(token)
+    return database.raw(`UPDATE admins SET dbToken=(?) WHERE id=(?) RETURNING *`, [token, id])
   }
 
   generateHash(password){

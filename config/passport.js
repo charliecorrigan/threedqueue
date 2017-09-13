@@ -62,10 +62,11 @@ module.exports = function(passport) {
       process.nextTick(function() {
         Admin.findOne(req.user.email).then(function(data) {
           Admin.updateToken(data.rows[0].id, accessToken).then(function(data) {
-            return done(null, data.rows[0])
+            return done(data.rows[0])
           })
-          return done(null, data.rows[0]);
+          return done(data.rows[0]);
         });
+        req.user.dbtoken = accessToken
         return done(null, req.user)
 
       });
