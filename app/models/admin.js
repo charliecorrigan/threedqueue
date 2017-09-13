@@ -36,10 +36,7 @@ class Admin {
   }
 
   save(){
-    console.log("In the save function, checking this...")
-    console.log(this.email)
-    console.log(this.password)
-    return database.raw('INSERT INTO admins (email, password, created_at) VALUES  (?, ?, ?) RETURNING *', [this.email, this.password, new Date])
+    return database.raw('INSERT INTO admins (email, password, created_at, organization, username) VALUES  (?, ?, ?, ?, ?) RETURNING *', [this.email, this.password, new Date, this.organization, this.username])
   }
 }
 
