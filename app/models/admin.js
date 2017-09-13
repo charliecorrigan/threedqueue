@@ -21,6 +21,11 @@ class Admin {
     return database.raw(`SELECT * FROM admins WHERE email=(?)`, [email])
   }
 
+  static updateToken(id, token){
+    let tokenHash = bcrypt.hashSync(token, bcrypt.genSaltSync(8), null)
+    return database.raw(`UPDATE admins SET dbToken=(?) WHERE id=(?) RETURNING *`, [tokenHash, id])
+  }
+
   generateHash(password){
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
   }

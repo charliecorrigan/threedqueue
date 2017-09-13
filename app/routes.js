@@ -20,7 +20,7 @@ module.exports = function(app, passport) {
   });
 
   app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect : '/dashboard', // redirect to the secure profile section
+    successRedirect : '/dropbox', // redirect to the secure profile section
     failureRedirect : '/signup', // redirect back to the signup page if there is an error
     failureFlash : true // allow flash messages
   }));
@@ -31,14 +31,20 @@ module.exports = function(app, passport) {
     });
   });
 
+  app.get('/dropbox', isLoggedIn, function(req, res) {
+    res.render('dropbox.ejs', {
+      user : req.user
+    });
+  });
+
   app.get('/logout', function(req, res) {
       req.logout();
       res.redirect('/');
   });
 
-  app.get('/auth/dropbox', passport.authenticate('dropbox-oauth2'));
+  app.get('/auth/dropbox', passport.authorize('dropbox-oauth2'));
 
-  app.get('/auth/dropbox/callback', passport.authenticate('dropbox-oauth2', { failureRedirect: 'http://localhost:8080' }),
+  app.get('/auth/dropbox/callback', passport.authorize('dropbox-oauth2', { failureRedirect: 'http://localhost:8080/dropbox' }),
   function(req, res) {
     console.log("Seriously. WTF")
     // Successful authentication, redirect home.
@@ -48,9 +54,11 @@ module.exports = function(app, passport) {
 
   // route middleware to make sure a user is logged in
   function isLoggedIn(req, res, next) {
-  
+    console.log("In the isLoggedIn function.")
       // if user is authenticated in the session, carry on 
       if (req.isAuthenticated())
+          console.log("Authentication Successful! Yay!")
+      
           return next();
   
       // if they aren't redirect them to the home page

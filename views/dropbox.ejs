@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
   <head>
@@ -10,14 +9,9 @@
     </style>
   </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="/logout" class="navbar">Logout</a></li>
-    </ul>
-  </nav>
-  <div class="content-container">
-    <h1>Admin Dashboard</h1>
     <h2>Welcome <%= user.email %>
+      <h2>You are at the dropbox page!</h2>
+      <p>You must authorize dropbox to continue</p>
     <p><a href="/auth/dropbox">Authorize Dropbox</a></p>
   </div>
 </body>
