@@ -19,6 +19,8 @@ module.exports = function(passport) {
       passReqToCallback : true
     },
     function(req, email, password, done) {
+      console.log("The req.body is...")
+      console.log(req.body)
       process.nextTick(function() {
         Admin.findOne(email).then(function(data) {
           if (data.rowCount > 0) {
@@ -27,6 +29,8 @@ module.exports = function(passport) {
             var newAdmin            = new Admin();
             newAdmin.email    = email;
             newAdmin.password = newAdmin.generateHash(password);
+            newAdmin.organization = req.body.organization
+            newAdmin.username = req.body.username
             newAdmin.save().then(data => {
               return done(null, newAdmin)
             })
@@ -62,10 +66,11 @@ module.exports = function(passport) {
       process.nextTick(function() {
         Admin.findOne(req.user.email).then(function(data) {
           Admin.updateToken(data.rows[0].id, accessToken).then(function(data) {
-            return done(null, data.rows[0])
+            return done(data.rows[0])
           })
-          return done(null, data.rows[0]);
+          return done(data.rows[0]);
         });
+        req.user.dbtoken = accessToken
         return done(null, req.user)
 
       });

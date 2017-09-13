@@ -1,0 +1,21 @@
+.dashboard {
+  margin-top: 100px !important;
+  margin-bottom: 50px !important;
+  background-color: white;
+  padding-top: 1%;
+  padding-bottom: 2%;
+  opacity: .94;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  width: 60%;
+  margin-left: 10%;
+  margin-right: auto;
+}
+
+.dashboard > ul li {
+  list-style: none;
+}

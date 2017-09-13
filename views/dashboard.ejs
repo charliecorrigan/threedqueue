@@ -5,9 +5,6 @@
     <title>3DQueue</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-    <style>
-        body        { padding-top:80px; }
-    </style>
   </head>
 <body>
   <nav>
@@ -15,10 +12,25 @@
       <li><a href="/logout" class="navbar">Logout</a></li>
     </ul>
   </nav>
-  <div class="content-container">
+  <section class="sidebar">
+    <ul class="sidebar-nav">
+      <li class="sidebar-links">Create New Project</li>
+      <li class="sidebar-links">Manage Queue</li>
+      <li class="sidebar-links">Manage Projects</li>
+      <li class="sidebar-links">Manage Accounts</li>
+      <li class="sidebar-links">Statistics</li>
+    </ul>
+  </section>
+  <div class="dashboard">
     <h1>Admin Dashboard</h1>
-    <h2>Welcome <%= user.email %>
-    <p><a href="/auth/dropbox">Authorize Dropbox</a></p>
+    <h2>Welcome <%= user.email %></h2>
+    <ul>
+      <li>Organization: <%= user.organization %></li>
+      <li>Username: <%= user.username %></li>
+      <li>Password (hashed): <%= user.password %></li>
+      <li>Dropbox Auth Token: <%= user.dbtoken %></li>
+    </ul>
+    
   </div>
 </body>
 </html>

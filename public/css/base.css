@@ -7,6 +7,7 @@ body {
   background-image: url("/images/splatter.png");
   background-size:cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 h1 {
@@ -22,6 +23,7 @@ h2 {
   font-size: 18px;
   font-weight: bold;
 }
+
 
 .content-container {
   margin-top: 100px !important;
@@ -40,6 +42,7 @@ h2 {
   align-items: center;
 }
 
+
 /* **************************
          NAV BAR
 ***************************** */
@@ -50,7 +53,7 @@ nav {
   display: flex;
   justify-content: flex-end;
   height: 40px;
-  padding-right: 1%;
+  /* padding-right: 1%; */
   padding-bottom: 1%;
   background-color: #00B8EC;
 }
@@ -92,6 +95,7 @@ nav li {
 
 a:hover {
   color: #FFCB05;
+  cursor: pointer;
 }
 
 .alert {
