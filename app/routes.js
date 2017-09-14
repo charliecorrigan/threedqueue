@@ -1,5 +1,7 @@
 // app/routes.js
 module.exports = function(app, passport) {
+  const environment = process.env.NODE_ENV || "development"
+  var configAuth = require('../config/auth_config')[environment]
 
   app.get('/', function(req, res) {
     res.render('index.ejs');
@@ -48,7 +50,8 @@ module.exports = function(app, passport) {
   function(req, res) {
     console.log("Seriously. WTF")
     // Successful authentication, redirect home.
-    res.redirect('http://localhost:8080/dashboard');
+    // res.redirect('http://localhost:8080/dashboard');
+    res.redirect(configAuth.dashboardUrl)
   });
 };
 

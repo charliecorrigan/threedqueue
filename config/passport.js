@@ -1,7 +1,9 @@
 var LocalStrategy   = require('passport-local').Strategy;
 var DropboxOAuth2Strategy = require('passport-dropbox-oauth2').Strategy
 var Admin            = require('../app/models/admin');
-var configAuth = require('./auth');
+// var configAuth = require('./auth');
+const environment = process.env.NODE_ENV || "development"
+var configAuth = require('./auth_config')[environment]
 
 module.exports = function(passport) {
 
