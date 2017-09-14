@@ -28,8 +28,6 @@ module.exports = function(app, passport) {
   }));
 
   app.get('/dashboard', isLoggedIn, function(req, res) {
-    console.log("Routes.js line 31ish. req.user is being passed to the dashboard view. It is:")
-    console.log(req.user)
     res.render('dashboard.ejs', {
       user : req.user
     });
@@ -50,14 +48,12 @@ module.exports = function(app, passport) {
 
   app.get('/auth/dropbox/callback', passport.authorize('dropbox-oauth2', { failureRedirect: 'http://localhost:8080/dropbox' }),
   function(req, res) {
-    console.log("Routes.js line 51ish. About to be redirected to dashboard")
     res.redirect(configAuth.dashboardUrl)
   });
 };
 
   function isLoggedIn(req, res, next) {
       if (req.isAuthenticated()) {
-          console.log("Authentication Successful! Yay!")
           return next();
       } else {
           res.redirect('/');

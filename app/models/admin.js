@@ -13,17 +13,11 @@ class Admin {
     this.organization         = "";
   }
 
-  static findById(){
-    console.log("In FindById")
-  }
-
   static findOne(email){
     return database.raw(`SELECT * FROM admins WHERE email=(?)`, [email])
   }
 
   static updateToken(id, token){
-    console.log("THe token is...")
-    console.log(token)
     return database.raw(`UPDATE admins SET dbToken=(?) WHERE id=(?) RETURNING *`, [token, id])
   }
 

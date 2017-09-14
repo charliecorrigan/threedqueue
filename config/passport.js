@@ -21,8 +21,6 @@ module.exports = function(passport) {
       passReqToCallback : true
     },
     function(req, email, password, done) {
-      console.log("The req.body is...")
-      console.log(req.body)
       process.nextTick(function() {
         Admin.findOne(email).then(function(data) {
           if (data.rowCount > 0) {
@@ -73,8 +71,6 @@ module.exports = function(passport) {
           return done(data.rows[0]);
         });
         req.user.dbtoken = accessToken
-        console.log("passport.js line 76ish. Supposedly, we just saved the token to the db. req.user.dbtoken is: ")
-        console.log(req.user.dbtoken)
         return done(null, req.user)
 
       });
