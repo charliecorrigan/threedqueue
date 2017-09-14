@@ -83,6 +83,16 @@ nav li {
   flex: 1 1 auto;
 }
 
+#logo {
+  font-family: 'Bungee Shade', cursive;
+  font-size: 40px;
+  letter-spacing: .4em;
+  text-align: left;
+  position: absolute;
+  left: 15px;
+  top: -33px;
+}
+
 .button {
   background-color: #00B8EC;
   border: none;
