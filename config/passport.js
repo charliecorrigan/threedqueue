@@ -73,6 +73,8 @@ module.exports = function(passport) {
           return done(data.rows[0]);
         });
         req.user.dbtoken = accessToken
+        console.log("passport.js line 76ish. Supposedly, we just saved the token to the db. req.user.dbtoken is: ")
+        console.log(req.user.dbtoken)
         return done(null, req.user)
 
       });
