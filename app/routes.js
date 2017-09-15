@@ -50,6 +50,10 @@ module.exports = function(app, passport) {
   function(req, res) {
     res.redirect(configAuth.dashboardUrl)
   });
+
+  app.get('*', function(req, res){
+    res.send("404. The page you are looking for does not exist.", 404);
+  });
 };
 
   function isLoggedIn(req, res, next) {
