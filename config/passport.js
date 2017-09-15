@@ -16,21 +16,21 @@ module.exports = function(passport) {
   });
 
   passport.use('local-signup', new LocalStrategy({
-      usernameField : 'email',
+      usernameField : 'username',
       passwordField : 'password',
       passReqToCallback : true
     },
-    function(req, email, password, done) {
+    function(req, username, password, done) {
       process.nextTick(function() {
-        Admin.findOne(email).then(function(data) {
+        Admin.findOne(username).then(function(data) {
           if (data.rowCount > 0) {
-            return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+            return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
           } else {
             var newAdmin            = new Admin();
-            newAdmin.email    = email;
-            newAdmin.password = newAdmin.generateHash(password);
-            newAdmin.organization = req.body.organization
-            newAdmin.username = req.body.username
+            newAdmin.email          = req.body.email;
+            newAdmin.password       = newAdmin.generateHash(password);
+            newAdmin.organization   = req.body.organization
+            newAdmin.username       = username
             newAdmin.save().then(data => {
               return done(null, newAdmin)
             })
@@ -40,12 +40,12 @@ module.exports = function(passport) {
   }));
 
   passport.use('local-login', new LocalStrategy({
-      usernameField : 'email',
+      usernameField : 'username',
       passwordField : 'password',
       passReqToCallback : true
     },
-    function(req, email, password, done) {
-      Admin.findOne(email).then(function(data) {
+    function(req, username, password, done) {
+      Admin.findOne(username).then(function(data) {
         if (data.rowCount < 1)
           return done(null, false, req.flash('loginMessage', 'No user found.'));
         if (!Admin.validPassword(password, data.rows[0].password))
@@ -64,7 +64,7 @@ module.exports = function(passport) {
 
     function(req, accessToken, refreshToken, profile, done) {
       process.nextTick(function() {
-        Admin.findOne(req.user.email).then(function(data) {
+        Admin.findOne(req.user.username).then(function(data) {
           Admin.updateToken(data.rows[0].id, accessToken).then(function(data) {
             return done(data.rows[0])
           })

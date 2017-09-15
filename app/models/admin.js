@@ -13,8 +13,8 @@ class Admin {
     this.organization         = "";
   }
 
-  static findOne(email){
-    return database.raw(`SELECT * FROM admins WHERE email=(?)`, [email])
+  static findOne(username){
+    return database.raw(`SELECT * FROM admins WHERE username=(?)`, [username])
   }
 
   static updateToken(id, token){
