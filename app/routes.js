@@ -1,5 +1,4 @@
-// app/routes.js
-module.exports = function(app, passport) {
+module.exports = function(app, passport, fileUpload) {
   const environment = process.env.NODE_ENV || "development"
   var configAuth = require('../config/auth_config')[environment]
   const Customer = require('./models/customer')
@@ -14,9 +13,9 @@ module.exports = function(app, passport) {
   });
 
   app.post('/login', passport.authenticate('local-login', {
-    successRedirect : '/dashboard', // redirect to the secure profile section
-    failureRedirect : '/login', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
+    successRedirect : '/dashboard',
+    failureRedirect : '/login',
+    failureFlash : true
   }));
 
   app.get('/signup', function(req, res) {
@@ -24,9 +23,9 @@ module.exports = function(app, passport) {
   });
 
   app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect : '/dropbox', // redirect to the secure profile section
-    failureRedirect : '/signup', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
+    successRedirect : '/dropbox',
+    failureRedirect : '/signup',
+    failureFlash : true
   }));
 
   app.get('/dashboard', isLoggedIn, function(req, res) {
@@ -42,8 +41,8 @@ module.exports = function(app, passport) {
   });
 
   app.get('/logout', function(req, res) {
-      req.logout();
-      res.redirect('/');
+    req.logout();
+    res.redirect('/');
   });
 
   app.get('/auth/dropbox', passport.authorize('dropbox-oauth2'));
@@ -59,11 +58,7 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.post('/projects', function(req, res) {
-    console.log("POSTED!")
-    console.log(req.body)
-    console.log(req.user)
-    // Customer.findOrCreateCustomer(req.user)
+  app.post('/projects', uploadFile, function(req, res) {
     Project.createNewProject(req.user, req.body)
     res.redirect('/dashboard');
   });
@@ -73,11 +68,28 @@ module.exports = function(app, passport) {
   });
 };
 
-  function isLoggedIn(req, res, next) {
-      if (req.isAuthenticated()) {
-          return next();
-      } else {
-          res.redirect('/');
+const Dropbox = require('dropbox');
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/');
       }
+  }
+
+  function uploadFile(req, res, next) {
+    var ACCESS_TOKEN = req.user.dbtoken
+    var dbx = new Dropbox({ accessToken: ACCESS_TOKEN });
+    var file = req.files.file
+    req.body.file_path = file.name
+    dbx.filesUpload({path: '/' + file.name, contents: file.data})
+      .then(function(response) {
+        return next();
+      })
+      .catch(function(error) {
+        console.error(error);
+      });
+    return false;
   }
 

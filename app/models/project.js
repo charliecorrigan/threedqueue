@@ -48,6 +48,7 @@ class Project {
         newProject.customer_name    = projectDetails.name;
         newProject.preferred_color  = assignColor[projectDetails['preferred-color']];
         newProject.comments         = projectDetails.comments;
+        newProject.file_path        = projectDetails.file_path;
         console.log(newProject)
         newProject.save()
       } else {
@@ -61,7 +62,8 @@ class Project {
           newProject.customer_name    = projectDetails.name;
           newProject.preferred_color  = assignColor[projectDetails['preferred-color']];
           newProject.comments         = projectDetails.comments;
-          console.log(newProject)
+          newProject.file_path        = projectDetails.file_path;
+        console.log(newProject)
           newProject.save()
         })
         }
@@ -69,7 +71,7 @@ class Project {
   }
 
   save(){
-    database.raw('INSERT INTO projects (admin_id, customer_id, name, preferred_color, customer_comments, approval_status, created_at) VALUES  (?, ?, ?, ?, ?, ?, ?) RETURNING *', [this.admin_id, this.customer_id, this.customer_name, this.preferred_color, this.comments, this.approval_status, new Date]).then(data =>{
+    database.raw('INSERT INTO projects (admin_id, customer_id, name, preferred_color, customer_comments, approval_status, file_path, created_at) VALUES  (?, ?, ?, ?, ?, ?, ?, ?) RETURNING *', [this.admin_id, this.customer_id, this.customer_name, this.preferred_color, this.comments, this.approval_status, this.file_path, new Date]).then(data =>{
       return data.rows[0]
     })
   }
@@ -82,6 +84,7 @@ class Project {
     console.log("Here in the find customer function.")
     return database.raw(`SELECT * FROM customers WHERE email=(?)`, [email])
   }
+  
 
   // static findOne(id){
   //   return database.raw(`SELECT * FROM admins WHERE id=(?)`, [id])

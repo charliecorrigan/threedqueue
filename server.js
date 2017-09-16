@@ -11,6 +11,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 require('./config/passport')(passport);
+const fileUpload = require('express-fileupload');
 
 // var configDB = require('./config/database.js'); // PROBABLY JUST FOR MONGOOSE, DELETE IF UNUSED
 
@@ -24,8 +25,9 @@ app.use(session({ secret: 'thisshouldprobablybesavedinanenvfile' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use(fileUpload());
 
-require('./app/routes.js')(app, passport);
+require('./app/routes.js')(app, passport, fileUpload);
 
 app.listen(port);
 console.log('The magic happens on port ' + port);
