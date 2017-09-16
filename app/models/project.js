@@ -82,6 +82,7 @@ class Project {
     console.log("Here in the find customer function.")
     return database.raw(`SELECT * FROM customers WHERE email=(?)`, [email])
   }
+  
 
   // static findOne(id){
   //   return database.raw(`SELECT * FROM admins WHERE id=(?)`, [id])
