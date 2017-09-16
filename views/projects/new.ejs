@@ -27,7 +27,7 @@
     <div class ="content-container">
       <h1>Submit a New Project</h1>
         <div class="container">
-          <form action="/projects" method="post" class="projects">
+          <form ref='uploadForm' action="/projects" method="post" class="projects" encType="multipart/form-data" id="uploadForm">
             <div class="flex-outer">
               <div class="form-group">
                 <label>Name</label>
@@ -39,7 +39,7 @@
               </div>
               <div class="form-group">
                 <label>File</label>
-                <input type="file" id="file" name="file" accept=".stl, .STL, .jpg" onchange="uploadFile" required>
+                <input type="file" id="file" name="file" accept=".stl, .STL, .jpg" required>
               </div>
               <div class="form-group">
                 <label>Preferred Color</label>

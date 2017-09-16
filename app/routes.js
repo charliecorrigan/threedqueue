@@ -1,5 +1,5 @@
 // app/routes.js
-module.exports = function(app, passport) {
+module.exports = function(app, passport, fileUpload) {
   const environment = process.env.NODE_ENV || "development"
   var configAuth = require('../config/auth_config')[environment]
   const Customer = require('./models/customer')
@@ -60,11 +60,10 @@ module.exports = function(app, passport) {
   });
   
   app.post('/projects', uploadFile, function(req, res) {
-    console.log("POSTED!")
-    console.log(req.body)
-    console.log(req.user)
+    console.log(" In the post function. Line63ish.");
+    
     // Customer.findOrCreateCustomer(req.user)
-    Project.createNewProject(req.user, req.body)
+    // Project.createNewProject(req.user, req.body)
     res.redirect('/dashboard');
   });
   
@@ -85,24 +84,19 @@ function isLoggedIn(req, res, next) {
   }
 
   function uploadFile(req, res, next) {
+    console.log(" In the uploadFile function. Line87ish.");
     var ACCESS_TOKEN = req.user.dbtoken
     var dbx = new Dropbox({ accessToken: ACCESS_TOKEN });
-    var file = req.body.file
-         
-        // console.log("Uploading: " + filename); 
-        // fstream = fs.createWriteStream(__dirname + '/files/' + filename);
-        // file.pipe(fstream);
-        // fstream.on('close', function () {
-        //     res.redirect('back');
-        // });
-    });
-    console.log("Here is a concatination..." + file + "...that should have been filename")
-    dbx.filesUpload({path: '/' + file, contents: file})
+    var file = req.files.file
+    console.log("In the post function. Variables declared. Line90ish.");
+    dbx.filesUpload({path: '/' + file.name, contents: file.data})
       .then(function(response) {
         console.log("Umm...we're on line 96ish. I think that's good.");
         return next();
       })
       .catch(function(error) {
+        console.log(" In the catch function. Line98ish.");
+    
         console.error(error);
       });
     return false;
