@@ -51,6 +51,12 @@ module.exports = function(app, passport) {
     res.redirect(configAuth.dashboardUrl)
   });
 
+  app.get('/projects/new', isLoggedIn, function(req, res) {
+    res.render('projects/new.ejs', {
+      user : req.user
+    });
+  });
+
   app.get('*', function(req, res){
     res.send("404. The page you are looking for does not exist.", 404);
   });

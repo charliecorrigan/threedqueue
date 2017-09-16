@@ -24,6 +24,11 @@
   margin-top: 20%;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
 .sidebar-links:hover {
   color: #FFCB05;
   cursor: pointer;
