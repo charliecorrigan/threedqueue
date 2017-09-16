@@ -101,3 +101,87 @@ form input {
   letter-spacing: .09em;
   text-transform: uppercase;
 }
+/* ********************************** */
+/* SUBMIT NEW PROJECT - COLOR BUTTONS */
+/* ********************************** */
+
+
+.preferred-color-buttons {
+  list-style-type:none;
+  margin:25px 0 0 0;
+  padding:0;
+}
+
+.preferred-color-buttons li {
+  float:left;
+  margin:0 5px 0 0;
+  width:100px;
+  height:40px;
+  position:relative;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+#blue-li {
+ background-color: blue;
+}
+
+#yellow-li {
+  background-color: yellow;
+ }
+
+ #red-li {
+  background-color: red;
+ }
+
+ #white-li {
+  background-color: white;
+  color: gray;
+ }
+
+ #black-li {
+  background-color: black;
+ }
+
+ #purple-li {
+  background-color: purple;
+ }
+
+ #orange-li {
+  background-color: orange;
+ }
+
+ #green-li {
+  background-color: green;
+ }
+
+.preferred-color-buttons label, .preferred-color-buttons input {
+ display:block;
+ position:absolute;
+ top:0;
+ left:0;
+ right:0;
+ bottom:0;
+}
+
+.preferred-color-buttons input[type="radio"] {
+ opacity:0.011;
+ z-index:100;
+}
+
+.preferred-color-buttons input[type="radio"]:checked + label {
+ color: gray;
+ border: 5px solid #00B8EC;
+}
+
+.preferred-color-buttons label {
+  padding:5px;
+  border:1px solid #CCC; 
+  cursor:pointer;
+ z-index:90;
+}
+
+.preferred-color-buttons label:hover {
+  background:#DDD;
+}

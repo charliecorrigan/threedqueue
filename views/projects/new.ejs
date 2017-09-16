@@ -1,0 +1,92 @@
+
+<!doctype html>
+<html>
+  <head>
+    <title>3DQueue</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+  </head>
+<body>
+  <nav>
+      <h1 id="logo">3DQueue</h1>
+    <ul>
+      <li><a href="/logout" class="navbar">Logout</a></li>
+    </ul>
+  </nav>
+  <section class="sidebar">
+    <ul class="sidebar-nav">
+      <a href="/projects/new"><li class="sidebar-links">Create New Project</li></a>
+      <li class="sidebar-links">Manage Queue</li>
+      <li class="sidebar-links">Manage Projects</li>
+      <li class="sidebar-links">Manage Accounts</li>
+      <li class="sidebar-links">Statistics</li>
+    </ul>
+  </section>
+  <div class="dashboard">
+    <div class ="content-container">
+      <h1>Submit a New Project</h1>
+        <div class="container">
+          <form action="/projects" method="post" class="projects">
+            <div class="flex-outer">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" name="name" required>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email" required>
+              </div>
+              <div class="form-group">
+                <label>File</label>
+                <input type="file" name="file" accept=".stl, .STL, .jpg" onchange="uploadFile" required>
+              </div>
+              <div class="form-group">
+                <label>Preferred Color</label>
+                <ul class="preferred-color-buttons">
+                  <li id="blue-li">
+                    <input type="radio" name="preferred-color" value="blue" id="blue">
+                    <label for="blue">Blue</label>
+                  </li>
+                  <li id="yellow-li">
+                    <input type="radio" name="preferred-color" value="yellow" id="yellow" checked="checked">
+                    <label for="yellow">Yellow</label>
+                  </li>
+                  <li id="red-li">
+                    <input type="radio" name="preferred-color" value="red" id="red">
+                    <label for="red">Red</label>
+                  </li>
+                  <li id="white-li">
+                    <input type="radio" name="preferred-color" value="white" id="white">
+                    <label for="white">White</label>
+                  </li>
+                  <li id="black-li">
+                    <input type="radio" name="preferred-color" value="black" id="black">
+                    <label for="black">Black</label>
+                  </li>
+                  <li id="purple-li">
+                    <input type="radio" name="preferred-color" value="purple" id="purple">
+                    <label for="purple">Purple</label>
+                  </li>
+                  <li id="orange-li">
+                    <input type="radio" name="preferred-color" value="orange" id="orange">
+                    <label for="orange">Orange</label>
+                  </li>
+                  <li id="green-li">
+                      <input type="radio" name="preferred-color" value="green" id="green">
+                      <label for="green">Green</label>
+                    </li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label>Comments</label>
+                <input type="text" class="form-control" name="comments" required>
+              </div>
+              <button type="submit" class="button">Submit Project</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+</body>
+</html>
