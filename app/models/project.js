@@ -40,7 +40,7 @@ class Project {
 
 
   static createNewProject(admin, projectDetails, done){
-    this.findCustomer(projectDetails.email).then(function(data){
+    this.findCustomer(projectDetails.email).then(data =>{
       if (data.rowCount > 0) {
         var newProject              = new Project();
         newProject.admin_id         = admin.id;
@@ -51,13 +51,19 @@ class Project {
         console.log(newProject)
         newProject.save()
       } else {
-        console.log("Here in the else")
-        // var newAdmin            = new Admin();
-        // newAdmin.email          = req.body.email;
-        // newAdmin.password       = newAdmin.generateHash(password);
-        // newAdmin.organization   = req.body.organization
-        // newAdmin.username       = username
-        // newAdmin.save()
+        var newCustomer            = new Customer();
+        newCustomer.email          = projectDetails.email;
+        database.raw('INSERT INTO customers (email, created_at) VALUES  (?, ?) RETURNING *', [newCustomer.email, new Date])
+        .then(data =>{
+          var newProject              = new Project();
+          newProject.admin_id         = admin.id;
+          newProject.customer_id      = data.rows[0].id;
+          newProject.customer_name    = projectDetails.name;
+          newProject.preferred_color  = assignColor[projectDetails['preferred-color']];
+          newProject.comments         = projectDetails.comments;
+          console.log(newProject)
+          newProject.save()
+        })
         }
     })
   }
@@ -66,6 +72,10 @@ class Project {
     database.raw('INSERT INTO projects (admin_id, customer_id, name, preferred_color, customer_comments, approval_status, created_at) VALUES  (?, ?, ?, ?, ?, ?, ?) RETURNING *', [this.admin_id, this.customer_id, this.customer_name, this.preferred_color, this.comments, this.approval_status, new Date]).then(data =>{
       return data.rows[0]
     })
+  }
+
+  static saveCustomer(newCustomer){
+
   }
 
   static findCustomer(email){
