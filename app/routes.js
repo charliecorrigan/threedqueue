@@ -58,9 +58,12 @@ module.exports = function(app, passport, fileUpload) {
     });
   });
 
-  app.post('/projects', uploadFile, function(req, res) {
+  app.post('/projects', isLoggedIn, uploadFile, function(req, res) {
     Project.createNewProject(req.user, req.body)
-    res.redirect('/dashboard');
+    // res.redirect('/projects/success.ejs');
+    res.render('projects/success.ejs', {
+      user : req.user
+    });
   });
 
   app.get('*', function(req, res){
