@@ -8,9 +8,7 @@ class Customer {
     this.email  = "";
   }
 
-  static findOne(email){
-    return database.raw(`SELECT * FROM customers WHERE email=(?)`, [email])
-  }
+
 
   save(){
     return database.raw('INSERT INTO customers (email, created_at) VALUES  (?, ?) RETURNING *', [this.email, new Date])
