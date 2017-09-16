@@ -49,7 +49,7 @@ class Project {
         newProject.preferred_color  = assignColor[projectDetails['preferred-color']];
         newProject.comments         = projectDetails.comments;
         console.log(newProject)
-        // newProject.save()
+        newProject.save()
       } else {
         console.log("Here in the else")
         // var newAdmin            = new Admin();
@@ -59,6 +59,12 @@ class Project {
         // newAdmin.username       = username
         // newAdmin.save()
         }
+    })
+  }
+
+  save(){
+    database.raw('INSERT INTO projects (admin_id, customer_id, name, preferred_color, customer_comments, approval_status, created_at) VALUES  (?, ?, ?, ?, ?, ?, ?) RETURNING *', [this.admin_id, this.customer_id, this.customer_name, this.preferred_color, this.comments, this.approval_status, new Date]).then(data =>{
+      return data.rows[0]
     })
   }
 
@@ -75,9 +81,6 @@ class Project {
   //   return database.raw(`UPDATE admins SET dbToken=(?) WHERE id=(?) RETURNING *`, [token, id])
   // }
 
-  // save(){
-  //   return database.raw('INSERT INTO admins (email, password, created_at, organization, username) VALUES  (?, ?, ?, ?, ?) RETURNING *', [this.email, this.password, new Date, this.organization, this.username])
-  // }
 }
 
 module.exports = Project;
