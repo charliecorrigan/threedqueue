@@ -2,6 +2,8 @@
 module.exports = function(app, passport) {
   const environment = process.env.NODE_ENV || "development"
   var configAuth = require('../config/auth_config')[environment]
+  const Customer = require('./models/customer')
+  const Project = require('./models/project')
 
   app.get('/', function(req, res) {
     res.render('index.ejs');
@@ -55,6 +57,15 @@ module.exports = function(app, passport) {
     res.render('projects/new.ejs', {
       user : req.user
     });
+  });
+
+  app.post('/projects', function(req, res) {
+    console.log("POSTED!")
+    console.log(req.body)
+    console.log(req.user)
+    // Customer.findOrCreateCustomer(req.user)
+    Project.createNewProject(req.user, req.body)
+    res.redirect('/dashboard');
   });
 
   app.get('*', function(req, res){
