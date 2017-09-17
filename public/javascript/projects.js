@@ -6,6 +6,17 @@ const baseApiUrl = {
   'development': "http://localhost:8080/api/v1"
 }
 
+const assignColor = {
+  0: 'blue',
+  1: 'yellow',
+  2: 'red',
+  3: 'white',
+  4: 'black',
+  5: 'purple',
+  6: 'orange',
+  7: 'green',
+}
+
 $(document).ready(function(){
   renderProjects();
 });
@@ -14,7 +25,7 @@ renderProjects = function(){
   $.getJSON(baseApiUrl[environment] + '/projects/awaiting')
   .then(function(projects){
     projects.forEach(function(project){
-      $("#projects-container").append("<p>" + project.created_at, project.email, project.name, project.preferred_color, project.id, project.customer_comments, project.file_path, project.email + "</p>")
+      $("#projects-container").append('<tr class="project-listing"><td class="listing-date">' + project.created_at.substring(0, 10) + '</td><td class="listing-name">' + project.name + '</td><td class="listing-email">' + project.email + '</td><td class="listing-color" style="background-color:' + assignColor[project.preferred_color] + ';"></td><td class="listing-file">' + project.file_path + '</td><td class="listing-comments">' + project.customer_comments + "</td></ul>")
     })
   })
 }

@@ -65,3 +65,55 @@ ul.project-header-ul li {
   list-style: none;
   display: inline;
 }
+
+.date {
+  padding-right: 40px
+}
+
+td {
+  font-size: 12px;
+}
+
+td.listing-date {
+  width: 90px;
+  padding-right: 10px;
+}
+
+.name {
+  padding-right: 200px
+}
+
+td.listing-name {
+  width: 245px;
+  padding-right: 5px;
+}
+
+.email {
+  padding-right: 220px
+}
+
+td.listing-email {
+  width: 235px;
+  padding-right: 5px;
+}
+
+.color {
+  padding-right: 20px
+}
+
+td.listing-color {
+  width: 70px;
+  padding-right: 5px;
+}
+
+.file {
+  padding-right: 80px
+}
+
+td.listing-file {
+  width: 90px;
+  padding-right: 5px;
+}
+.comments {
+  padding-right: 20px
+}
