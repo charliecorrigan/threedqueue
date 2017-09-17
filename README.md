@@ -1,38 +1,38 @@
-#3DQueue - _A 3D printer queue management tool for public makerspaces_
+# 3DQueue - _A 3D printer queue management tool for public makerspaces_
 
 **********************************************************************
-##Description
+## Description
 **********************************************************************
 
-3DQueue is a free and open source app to help public makerspaces manage their 3D print queues, from project submissions and customer notifications to project approvals and statistics.
+3DQueue is a free and open source app to help public makerspaces manage their 3D print queues, from project submissions and customer notifications to project approvals and statistics. This app is still a work in progress, but is expected to be completed by January 2018
 
-###Dropbox File Storage
+### Dropbox File Storage
 
 Create an account for your organization and link it to a Dropbox account to store project submission .stl files. Only .stl files can be uploaded through the project submission form. Files are automatically deleted upon either project rejection or 30 days after project completion to keep your Dropbox account tidy.
 
-###Multitenancy Authorization
+### Multitenancy Authorization
 
 Once you create a makerspace admin account, you can assign additional public-facing accounts with limited permissions. These frontline accounts can be used to submit projects but not to access other projects or manage the queue.
 
-###Simple Customer Interface
+### Simple Customer Interface
 
 The project submission form is quick easy to fill out. The app will email customers a custom form letter to let them know when their project is available to be picked up or if their project failed to print successfully.
 
-###Queue Management Tools
+### Queue Management Tools
 
 Project submission form includes required fields so that incomplete project details are not submitted. Admin can check project details at a glance before approving prints to enter the queue. Once a project is approved, it will automatically enter the queue. In order to allow for equitable printer use, customers can only have a single print in the queue at a time. Additional approved projects will enter into the queue as each of the customer's previous projects is marked as completed.
 
-###Statistics at a Glance
+### Statistics at a Glance
 
 See a variety of printer use statistics and graphs for valuable grant reporting data.
 
 **********************************************************************
-##Getting Started
+## Getting Started
 **********************************************************************
 
 To use the creator's production app for your makerspace, visit [3DQueue on Heroku](https://threedqueue.herokuapp.com/).
 
-To launch your own, keep reading...
+To launch your own version on a different server, keep reading...
 
 ### Technical Details
 This project was completed using the following:
