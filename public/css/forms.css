@@ -106,6 +106,38 @@ form input {
   letter-spacing: .09em;
   text-transform: uppercase;
 }
+
+.new-project-dashboard {
+  margin-top: none !important;
+  margin-bottom: 50px !important;
+  padding-top: 1%;
+  padding-bottom: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  width: 70%;
+  margin-left: 5%;
+  margin-right: auto;
+}
+
+#new-project-container {
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
+  width: 80%;
+  margin: auto;
+  margin-bottom: auto;
+  background-color: white;
+  padding-top: 2%;
+  padding-bottom: 5%;
+  opacity: .98;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 /* ********************************** */
 /* SUBMIT NEW PROJECT - COLOR BUTTONS */
 /* ********************************** */
