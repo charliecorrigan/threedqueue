@@ -3,6 +3,11 @@ module.exports = function(app, passport, fileUpload) {
   var configAuth = require('../config/auth_config')[environment]
   const Customer = require('./models/customer')
   const Project = require('./models/project')
+  const baseAPI = '/api/v1';
+
+// *************************************
+//       OPEN ROUTES - TEMPLATES
+// *************************************
 
   app.get('/', function(req, res) {
     res.render('index.ejs');
@@ -27,6 +32,10 @@ module.exports = function(app, passport, fileUpload) {
     failureRedirect : '/signup',
     failureFlash : true
   }));
+
+// *************************************
+//     PROTECTED ROUTES - TEMPLATES
+// *************************************
 
   app.get('/dashboard', isLoggedIn, function(req, res) {
     res.render('dashboard.ejs', {
@@ -60,7 +69,6 @@ module.exports = function(app, passport, fileUpload) {
 
   app.post('/projects', isLoggedIn, uploadFile, function(req, res) {
     Project.createNewProject(req.user, req.body)
-    // res.redirect('/projects/success.ejs');
     res.render('projects/success.ejs', {
       user : req.user
     });
@@ -89,6 +97,25 @@ module.exports = function(app, passport, fileUpload) {
       user : req.user
     });
   });
+
+// *************************************
+//   PROTECTED ROUTES - API ENDPOINTS
+// *************************************
+
+app.get(baseAPI + '/projects/awaiting', isLoggedIn, (req, res) => {
+  Project.all(req.user, 'awaiting_approval')
+    .then((data) => {
+      if (data.rows.length < 1) {
+        return res.sendStatus(404)
+      } else {
+        res.json(data.rows)
+      }
+    })
+});
+
+// *************************************
+//                 404
+// *************************************
 
   app.get('*', function(req, res){
     res.send("404. The page you are looking for does not exist.", 404);

@@ -76,24 +76,30 @@ class Project {
     })
   }
 
-  static saveCustomer(newCustomer){
-
+  static all(admin, status){
+    console.log(admin)
+    console.log(admin.id)
+    console.log(status)
+    console.log(assignApprovaStatus[status])
+    return database.raw(`SELECT projects.created_at,
+                                projects.name,
+                                projects.preferred_color,
+                                projects.id,
+                                projects.customer_comments,
+                                projects.file_path,
+                                customers.email
+                        FROM projects
+                        INNER JOIN customers
+                        ON projects.customer_id = customers.id
+                        WHERE projects.admin_id = (?) and projects.approval_status = (?)`,
+                        [admin.id, assignApprovaStatus[status]]
+                      )
   }
 
   static findCustomer(email){
     console.log("Here in the find customer function.")
     return database.raw(`SELECT * FROM customers WHERE email=(?)`, [email])
   }
-  
-
-  // static findOne(id){
-  //   return database.raw(`SELECT * FROM admins WHERE id=(?)`, [id])
-  // }
-
-  // static updateToken(id, token){
-  //   return database.raw(`UPDATE admins SET dbToken=(?) WHERE id=(?) RETURNING *`, [token, id])
-  // }
-
 }
 
 module.exports = Project;
