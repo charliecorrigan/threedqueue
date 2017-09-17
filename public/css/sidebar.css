@@ -11,13 +11,14 @@
 }
 
 .sidebar-nav {
-  float:left;
   padding: none;
   margin: none;
   list-style: none;
+  padding: initial;
 }
 
 .sidebar-links {
+  width: 100%;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
