@@ -66,6 +66,30 @@ module.exports = function(app, passport, fileUpload) {
     });
   });
 
+  app.get('/admin/manage-accounts', isLoggedIn, function(req, res) {
+    res.render('admin/manage-accounts.ejs', {
+      user : req.user
+    });
+  });
+
+  app.get('/admin/manage-projects', isLoggedIn, function(req, res) {
+    res.render('admin/manage-projects.ejs', {
+      user : req.user
+    });
+  });
+
+  app.get('/admin/manage-queue', isLoggedIn, function(req, res) {
+    res.render('admin/manage-queue.ejs', {
+      user : req.user
+    });
+  });
+
+  app.get('/admin/statistics-reporting', isLoggedIn, function(req, res) {
+    res.render('admin/statistics-reporting.ejs', {
+      user : req.user
+    });
+  });
+
   app.get('*', function(req, res){
     res.send("404. The page you are looking for does not exist.", 404);
   });
