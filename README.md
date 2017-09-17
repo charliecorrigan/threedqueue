@@ -1,4 +1,5 @@
-# 3DQueue - _A 3D printer queue management tool for public makerspaces_
+# 3DQueue:
+  # _A 3D printer queue management tool for public makerspaces_
 
 **********************************************************************
 ## Description
