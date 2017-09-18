@@ -40,8 +40,9 @@ renderProjects = function(){
                                       + project.name 
                                       + '</td><td class="listing-email">' 
                                       + project.email 
-                                      + `</td><td class="listing-file">
-                                      <i class="fa fa-paperclip fa-2x" aria-hidden="true"></i>
+                                      + `</td><td class="listing-file"><a href="`
+                                      + baseFileUrl + project.file_path
+                                      + `" id="paperclip-link"><i class="fa fa-paperclip fa-2x" aria-hidden="true"></i></a>
                                       </td><td class="listing-color" style="background-color:`
                                       + assignColor[project.preferred_color] 
                                       + `;"></td><td class="listing-comments"><i class="fa fa-comment-o fa-2x" aria-hidden="true" style="`

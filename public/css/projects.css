@@ -140,3 +140,8 @@ td.listing-comments {
 th, td {
   border-bottom: 1px solid #ddd;
 }
+
+a#paperclip-link {
+  color: black;
+  cursor: pointer;
+}
