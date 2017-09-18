@@ -6,6 +6,8 @@ const baseApiUrl = {
   'development': "http://localhost:8080/api/v1"
 }
 
+const baseFileUrl = "https://www.dropbox.com/home/Apps/threedqueue?preview="
+
 const assignColor = {
   0: 'blue',
   1: 'yellow',
