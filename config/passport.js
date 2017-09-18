@@ -32,6 +32,11 @@ module.exports = function(passport) {
             newAdmin.organization   = req.body.organization
             newAdmin.username       = username
             newAdmin.save().then(data => {
+              console.log("After the save admin function.")
+              console.log("The following should be the new admin data. Look for the id and make sure it's not 0:")
+              console.log(data)
+              console.log("The following should be the newAdmin. Look for the id and make sure it's not 0:")
+              console.log(newAdmin)
               return done(null, newAdmin)
             })
           }

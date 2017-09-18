@@ -34,9 +34,6 @@ class Admin {
   }
 
   save(){
-    console.log("In the save admin function.")
-    console.log("The following should be the new admin. Look for the id and make sure it's not 0:")
-    console.log(data)
     return database.raw('INSERT INTO admins (email, password, created_at, organization, username) VALUES  (?, ?, ?, ?, ?) RETURNING *', [this.email, this.password, new Date, this.organization, this.username])
   }
 }
