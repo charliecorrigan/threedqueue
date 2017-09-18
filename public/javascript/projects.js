@@ -1,5 +1,5 @@
-// const environment = "development"
-const environment = "production"
+const environment = "development"
+// const environment = "production"
 
 const baseApiUrl = {
   'production': "https://threedqueue.herokuapp.com/api/v1",
@@ -22,6 +22,7 @@ const assignColor = {
 $(document).ready(function(){
   renderProjects();
   // openStatus(event, 'waiting-for-approval')
+  toggleComment();
 });
 
 renderProjects = function(){
@@ -45,15 +46,12 @@ renderProjects = function(){
                                       + `" id="paperclip-link"><i class="fa fa-paperclip fa-2x" aria-hidden="true"></i></a>
                                       </td><td class="listing-color" style="background-color:`
                                       + assignColor[project.preferred_color] 
-                                      + `;"></td><td class="listing-comments">  <div id="expand">
-                                      <section>
-                                        <p>mew</p>
-                                      </section>
-                                    </div><i class="fa fa-comment-o fa-2x" aria-hidden="true" style="`
+                                      + `;"></td><td class="listing-comments" id="comment-icon-${project.id}"><i class="fa fa-comment-o fa-2x" aria-hidden="true" style="`
                                       + comment
                                       + `"></i></td>
                                       <td class="listing-approval"><i class="fa fa-check fa-2x" aria-hidden="true" style="color: green;"></i>
-                                      <i class="fa fa-ban fa-2x" aria-hidden="true" style="color: red;"></i></td></tr>`)
+                                      <i class="fa fa-ban fa-2x" aria-hidden="true" style="color: red;"></i></td></tr>
+                                      <tr id="comment-${project.id}" style="display:none;"><td colspan="7">${project.customer_comments}</td></tr>`)
     })
   })
 }
@@ -77,4 +75,10 @@ function openStatus(evt, statusName) {
   // Show the current tab, and add an "active" class to the button that opened the tab
   document.getElementById(statusName).style.display = "block";
   evt.currentTarget.className += " active";
+}
+
+function toggleComment(){
+  $('#projects-container').on('click', '.listing-comments', function(event){
+    $(`#comment-${event.currentTarget.id.split("-")[2]}`).toggle();
+  })
 }
