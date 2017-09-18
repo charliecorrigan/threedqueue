@@ -19,13 +19,34 @@ const assignColor = {
 
 $(document).ready(function(){
   renderProjects();
+  // openStatus(event, 'waiting-for-approval')
 });
 
 renderProjects = function(){
   $.getJSON(baseApiUrl[environment] + '/projects/awaiting')
   .then(function(projects){
     projects.forEach(function(project){
-      $("#projects-container").append('<tr class="project-listing"><td class="listing-date">' + project.created_at.substring(0, 10) + '</td><td class="listing-name">' + project.name + '</td><td class="listing-email">' + project.email + '</td><td class="listing-color" style="background-color:' + assignColor[project.preferred_color] + ';"></td><td class="listing-file">' + project.file_path + '</td><td class="listing-comments">' + project.customer_comments + "</td></ul>")
+      let comment;
+      if(project.customer_comments.length > 0){
+        comment = "display: inline;"
+      } else {
+        comment = "display: none;"
+      }
+      $("#projects-container").append('<tr class="project-listing"><td class="listing-date">'
+                                      + project.created_at.substring(0, 10) 
+                                      + '</td><td class="listing-name">' 
+                                      + project.name 
+                                      + '</td><td class="listing-email">' 
+                                      + project.email 
+                                      + `</td><td class="listing-file">
+                                      <i class="fa fa-paperclip fa-2x" aria-hidden="true"></i>
+                                      </td><td class="listing-color" style="background-color:`
+                                      + assignColor[project.preferred_color] 
+                                      + `;"></td><td class="listing-comments"><i class="fa fa-comment-o fa-2x" aria-hidden="true" style="`
+                                      + comment
+                                      + `"></i></td>
+                                      <td class="listing-approval"><i class="fa fa-check fa-2x" aria-hidden="true" style="color: green;"></i>
+                                      <i class="fa fa-ban fa-2x" aria-hidden="true" style="color: red;"></i></td></tr>`)
     })
   })
 }
