@@ -37,7 +37,7 @@ module.exports = function(passport) {
               console.log(data)
               console.log("The following should be the newAdmin. Look for the id and make sure it's not 0:")
               console.log(newAdmin)
-              return done(null, newAdmin)
+              return done(null, data.rows[0])
             })
           }
         });
