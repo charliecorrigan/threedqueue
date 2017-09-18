@@ -52,10 +52,13 @@ class Project {
         console.log(newProject)
         newProject.save()
       } else {
+        console.log("This customer is new. In the else statement.")
         var newCustomer            = new Customer();
         newCustomer.email          = projectDetails.email;
         database.raw('INSERT INTO customers (email, created_at) VALUES  (?, ?) RETURNING *', [newCustomer.email, new Date])
         .then(data =>{
+          console.log("The following should be the new customer:")
+          console.log(data)
           var newProject              = new Project();
           newProject.admin_id         = admin.id;
           newProject.customer_id      = data.rows[0].id;
@@ -72,6 +75,9 @@ class Project {
 
   save(){
     database.raw('INSERT INTO projects (admin_id, customer_id, name, preferred_color, customer_comments, approval_status, file_path, created_at) VALUES  (?, ?, ?, ?, ?, ?, ?, ?) RETURNING *', [this.admin_id, this.customer_id, this.customer_name, this.preferred_color, this.comments, this.approval_status, this.file_path, new Date]).then(data =>{
+      console.log("In the save project function.")
+      console.log("The following should be the new project:")
+      console.log(data)
       return data.rows[0]
     })
   }

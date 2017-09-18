@@ -103,6 +103,9 @@ module.exports = function(app, passport, fileUpload) {
 // *************************************
 
 app.get(baseAPI + '/projects/awaiting', isLoggedIn, (req, res) => {
+  console.log("In the api route.")
+  console.log("The following should be the current admin:")
+  console.log(req.user)
   Project.all(req.user, 'awaiting_approval')
     .then((data) => {
       if (data.rows.length < 1) {
