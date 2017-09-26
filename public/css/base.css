@@ -5,7 +5,8 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   background-image: url("/images/splatter.png");
-  background-size:cover;
+  /* background-size:cover; */
+  background-size: 1500px;
   background-repeat: no-repeat;
   overflow: hidden;
 }
@@ -49,6 +50,13 @@ h2 {
 /* **************************
          NAV BAR
 ***************************** */
+#logo {
+  position: absolute !important;
+  left: 2%;
+  top: 2%;
+  z-index: 2;
+  width: 250px;
+}
 
 nav {
   font-size: 18px;
@@ -81,16 +89,6 @@ nav ul {
 nav li {
   text-align: center;
   flex: 1 1 auto;
-}
-
-#logo {
-  font-family: 'Bungee Shade', cursive;
-  font-size: 40px;
-  letter-spacing: .4em;
-  text-align: left;
-  position: absolute;
-  left: 15px;
-  top: -33px;
 }
 
 .button {
@@ -126,4 +124,38 @@ a:hover {
 
 .centered {
   text-align: center;
+}
+
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a.blue-link {
+  text-decoration: none;
+  color: #00B8EC;
+}
+
+a.blue-link:hover {
+  color: #FFCB05;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1430px) {
+  #logo {
+    width: 220px;
+  }
+}
+
+@media screen and (max-width: 1230px) {
+  #logo {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 1130px) {
+  #logo {
+    width: 180px;
+  }
 }

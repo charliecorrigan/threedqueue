@@ -2,7 +2,7 @@
   width: 20%;
   float: left;
   background-color: #00B8EC;
-  height: 800px;
+  height: 10000px;
   overflow: hidden;
   color: white;
   font-size: 18px;
@@ -12,7 +12,7 @@
 
 .sidebar-nav {
   padding: none;
-  margin: none;
+  margin-top: 70%;
   list-style: none;
   padding: initial;
 }
@@ -23,11 +23,6 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 20%;
-}
-
-a {
-  text-decoration: none;
-  color: white;
 }
 
 .sidebar-links:hover {
