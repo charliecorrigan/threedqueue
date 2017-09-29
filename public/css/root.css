@@ -1,17 +1,73 @@
-// **************************
+/* // **************************
 //         CONTENT
-// **************************
+// ************************** */
 .app-description-container {
-  width: 94%;
+  /* width: 94%; */
   padding-top: 15px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .app-description {
-  padding: 2% 3% 2% 3%;
-  -webkit-column-count: 3; /* Chrome, Safari, Opera */
-  -moz-column-count: 3; /* Firefox */
-  column-count: 3;
-  -webkit-column-gap: 30px; /* Chrome, Safari, Opera */
-  -moz-column-gap: 30px; /* Firefox */
-  column-gap: 30px;
+  display: flex;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.index-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  text-align: center;
+  /* border: 1px solid black; */
+  margin: 15px;
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  box-shadow: gray;
+  box-shadow: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
+}
+
+.index-card-title {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p {
+  padding: 3%;
+}
+
+#card1 {
+  background-image: url("/images/cardbackground004.jpg");
+  background-size: 300px;
+}
+
+#card2 {
+  background-image: url("/images/cardbackground001.jpg");
+  background-size: 300px;
+}
+
+#card3 {
+  background-image: url("/images/cardbackground003.jpg");
+  background-size: 300px;
+}
+
+#card4 {
+  background-image: url("/images/cardbackground005.jpg");
+  background-size: 300px;
+}
+
+#card5 {
+  background-image: url("/images/cardbackground007.png");
+  background-size: 300px;
+}
+
+#card6 {
+  background-image: url("/images/cardbackground006.jpg");
+  background-size: 300px;
 }

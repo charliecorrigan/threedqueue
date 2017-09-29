@@ -4,11 +4,10 @@ body {
   border: 0px;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  background-image: url("/images/splatter.png");
-  /* background-size:cover; */
+  /* background-image: url("/images/splatter.png");
   background-size: 1500px;
-  background-repeat: no-repeat;
-  overflow: hidden;
+  background-repeat: no-repeat; */
+  /* overflow: hidden; */
 }
 
 h1 {
@@ -33,11 +32,11 @@ h2 {
   width: 80%;
   margin: auto;
   margin-bottom: auto;
-  background-color: white;
+  /* background-color: white; */
   padding-top: 1%;
   padding-bottom: 2%;
-  opacity: .94;
-  border: 1px solid black;
+  /* opacity: .94;
+  border: 1px solid black; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,6 +66,7 @@ nav {
   /* padding-right: 1%; */
   padding-bottom: 1%;
   background-color: #00B8EC;
+  box-shadow: 0 4px 2px -2px gray;
 }
 nav a {
   color: #ffffff;
