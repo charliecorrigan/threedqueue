@@ -13,7 +13,7 @@ main {
   margin-left: 3%;
   width: 30%;
   border-radius: 20px;
-  color: white;
+  color: #606060;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,8 +70,6 @@ main {
   width: 230px;
   height: 230px;
   border-radius: 20px;
-  box-shadow: gray;
-  box-shadow: 5px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
 }
 
@@ -104,7 +102,7 @@ main {
   text-align: center;
 }
 
-p {
+.root-p {
   padding: 3%;
 }
 
