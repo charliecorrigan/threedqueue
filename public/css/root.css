@@ -1,11 +1,53 @@
 /* // **************************
 //         CONTENT
 // ************************** */
+main {
+  display: flex;
+  justify-content: center;
+}
+.more-details-container {
+  background-color: #DCDCDC;
+  height: 480px;
+  padding: 10px;
+  margin-top: 5%;
+  margin-left: 3%;
+  width: 30%;
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px;
+}
+
+#content-card2 {
+  display:none;
+}
+
+#content-card3 {
+  display:none;
+}
+
+#content-card4 {
+  display:none;
+}
+
+#content-card5 {
+  display:none;
+}
+
+#content-card6 {
+  display:none;
+}
+
 .app-description-container {
   /* width: 94%; */
   padding-top: 15px;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+  float: right;
+  width: 60%;
 }
 
 .app-description {
@@ -25,17 +67,41 @@
   text-align: center;
   /* border: 1px solid black; */
   margin: 15px;
-  width: 300px;
-  height: 300px;
+  width: 230px;
+  height: 230px;
   border-radius: 20px;
   box-shadow: gray;
   box-shadow: 5px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
 }
 
+.index-card:hover {
+  cursor: pointer;
+}
+
 .index-card-title {
+  display: flex;
   margin-left: auto;
   margin-right: auto;
+  text-transform: uppercase;
+  font-size: 12px;
+  background-color: #00B8EC;
+  color: white;
+  display: inline;
+  max-height: 50px;
+  margin-top: 40%;
+  letter-spacing: 1px;
+  line-height: 4;
+  width: 100%;
+}
+
+.index-card-description {
+  display: none;
+  background-color: #00B8EC;
+  color: white;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 p {
@@ -44,30 +110,30 @@ p {
 
 #card1 {
   background-image: url("/images/cardbackground004.jpg");
-  background-size: 300px;
+  background-size: 230px;
 }
 
 #card2 {
   background-image: url("/images/cardbackground001.jpg");
-  background-size: 300px;
+  background-size: 230px;
 }
 
 #card3 {
   background-image: url("/images/cardbackground003.jpg");
-  background-size: 300px;
+  background-size: 230px;
 }
 
 #card4 {
   background-image: url("/images/cardbackground005.jpg");
-  background-size: 300px;
+  background-size: 230px;
 }
 
 #card5 {
   background-image: url("/images/cardbackground007.png");
-  background-size: 300px;
+  background-size: 230px;
 }
 
 #card6 {
   background-image: url("/images/cardbackground006.jpg");
-  background-size: 300px;
+  background-size: 230px;
 }
