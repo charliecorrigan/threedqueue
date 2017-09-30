@@ -8,8 +8,6 @@ class Customer {
     this.email  = "";
   }
 
-
-
   save(){
     return database.raw('INSERT INTO customers (email, created_at) VALUES  (?, ?) RETURNING *', [this.email, new Date])
   }

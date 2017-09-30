@@ -13,8 +13,6 @@ var session      = require('express-session');
 require('./config/passport')(passport);
 const fileUpload = require('express-fileupload');
 
-// var configDB = require('./config/database.js'); // PROBABLY JUST FOR MONGOOSE, DELETE IF UNUSED
-
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser());

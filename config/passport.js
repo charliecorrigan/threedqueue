@@ -1,7 +1,6 @@
 var LocalStrategy   = require('passport-local').Strategy;
 var DropboxOAuth2Strategy = require('passport-dropbox-oauth2').Strategy
 var Admin            = require('../app/models/admin');
-// var configAuth = require('./auth');
 const environment = process.env.NODE_ENV || "development"
 var configAuth = require('./auth_config')[environment]
 
@@ -32,11 +31,6 @@ module.exports = function(passport) {
             newAdmin.organization   = req.body.organization
             newAdmin.username       = username
             newAdmin.save().then(data => {
-              console.log("After the save admin function.")
-              console.log("The following should be the new admin data. Look for the id and make sure it's not 0:")
-              console.log(data)
-              console.log("The following should be the newAdmin. Look for the id and make sure it's not 0:")
-              console.log(newAdmin)
               return done(null, data.rows[0])
             })
           }
