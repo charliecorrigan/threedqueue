@@ -40,7 +40,7 @@ renderProjects = function(){
                                         <td colspan="7">
                                           <form>
                                             <label>Initials</label>
-                                            <input type="text" class="form-control" name="initials" required>
+                                            <input type="text" class="form-control" name="initials" id="initials" required>
                                             <button type="submit" value="Submit" id="approve-button"><i class="fa fa-check fa-2x" aria-hidden="true" style="color: green;"></i></button>
                                           </form>
                                         </td>
@@ -73,9 +73,25 @@ listenForApprove = function(){
     $("#projects-container").on('click', '#approve-button', function(){
       event.preventDefault();
       $(`#${event.target.closest('.approve-initials').id.split('-form')[0]}-form`).hide();
+      const id = event.target.closest('.approve-initials').id.split('-')[1];
+      const initials = this.previousElementSibling.value;
+      const params = {approval_initials: initials, approval: 1, id: id};
+      $.ajax({
+        type: "PUT",
+        url: baseApiUrl[environment] + '/projects/' + id,
+        data: params
+      }).then(function(result){
+        console.log("I think it posted, yo.")
+      }).catch(function(error){
+        console.log(error);
+      });
     })
   })
 }
+
+handleError = function(error) {
+  console.error(error);
+};
 
 function openStatus(evt, statusName) {
   // Declare all variables

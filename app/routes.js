@@ -109,9 +109,24 @@ app.get(baseAPI + '/projects/awaiting', isLoggedIn, (req, res) => {
   Project.all(req.user, 'awaiting_approval')
     .then((data) => {
       if (data.rows.length < 1) {
-        return res.sendStatus(404)
+        res.send("404. The page you are looking for does not exist.", 404);
       } else {
         res.json(data.rows)
+      }
+    })
+});
+
+app.put(baseAPI + '/projects/:id', isLoggedIn, function(req, res) {
+  // res.render('dashboard.ejs', {
+  //   user : req.user
+  // });
+  console.log("In the put route. Good job!")
+  Project.updateStatus(req.body.id, req.body.approval_initials, req.body.approval)
+    .then(data => {
+      if (data.rows.length < 1) {
+        res.send("Something went wrong. Contact administrator if problem persists.");
+      } else {
+        res.json(data.rows[0])
       }
     })
 });
