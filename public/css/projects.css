@@ -1,16 +1,4 @@
 .project-content-container {
-  /* margin-top: 20px !important;
-  margin-bottom: 50px !important;
-  width: 90%;
-  height: 600px;
-  margin: auto;
-  margin-bottom: auto;
-  background-color: #F0F0F0;
-  padding-bottom: 2%;
-  opacity: .94;
-  overflow: scroll;
-  border-radius: 20px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2); */
   margin-top: 15px !important;
   margin-bottom: 50px !important;
   width: 63%;
@@ -149,10 +137,6 @@ td.listing-comments {
   text-align: center;
   padding-right: 15px;
 }
-
-/* td.listing-approval {
-  background-color: #ddd;
-} */
 
 th, td {
   border-bottom: 1px solid #ddd;

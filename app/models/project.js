@@ -49,16 +49,12 @@ class Project {
         newProject.preferred_color  = assignColor[projectDetails['preferred-color']];
         newProject.comments         = projectDetails.comments;
         newProject.file_path        = projectDetails.file_path;
-        console.log(newProject)
         newProject.save()
       } else {
-        console.log("This customer is new. In the else statement.")
         var newCustomer            = new Customer();
         newCustomer.email          = projectDetails.email;
         database.raw('INSERT INTO customers (email, created_at) VALUES  (?, ?) RETURNING *', [newCustomer.email, new Date])
         .then(data =>{
-          console.log("The following should be the new customer:")
-          console.log(data)
           var newProject              = new Project();
           newProject.admin_id         = admin.id;
           newProject.customer_id      = data.rows[0].id;
@@ -66,7 +62,6 @@ class Project {
           newProject.preferred_color  = assignColor[projectDetails['preferred-color']];
           newProject.comments         = projectDetails.comments;
           newProject.file_path        = projectDetails.file_path;
-        console.log(newProject)
           newProject.save()
         })
         }
@@ -74,19 +69,23 @@ class Project {
   }
 
   save(){
-    database.raw('INSERT INTO projects (admin_id, customer_id, name, preferred_color, customer_comments, approval_status, file_path, created_at) VALUES  (?, ?, ?, ?, ?, ?, ?, ?) RETURNING *', [this.admin_id, this.customer_id, this.customer_name, this.preferred_color, this.comments, this.approval_status, this.file_path, new Date]).then(data =>{
-      console.log("In the save project function.")
-      console.log("The following should be the new project:")
-      console.log(data)
+    database.raw(`INSERT INTO projects (admin_id,
+                                        customer_id,
+                                        name,
+                                        preferred_color,
+                                        customer_comments,
+                                        approval_status,
+                                        file_path,
+                                        created_at)
+                  VALUES  (?, ?, ?, ?, ?, ?, ?, ?)
+                  RETURNING *`,
+                  [this.admin_id, this.customer_id, this.customer_name, this.preferred_color, this.comments, this.approval_status, this.file_path, new Date])
+    .then(data =>{
       return data.rows[0]
     })
   }
 
   static all(admin, status){
-    console.log(admin)
-    console.log(admin.id)
-    console.log(status)
-    console.log(assignApprovaStatus[status])
     return database.raw(`SELECT projects.created_at,
                                 projects.name,
                                 projects.preferred_color,
@@ -103,23 +102,12 @@ class Project {
   }
 
   static findCustomer(email){
-    console.log("Here in the find customer function.")
     return database.raw(`SELECT * FROM customers WHERE email=(?)`, [email])
   }
 
   static updateStatus(id, approvalInitials, status){
-    console.log("We're in update status function. Id is...")
-    console.log(id)
-    console.log("ApprovalInitials are...")
-    console.log(approvalInitials)
-    console.log("Status is...")
-    console.log(status)
     const projectId = parseInt(id)
     const approvalStatus = parseInt(status)
-    console.log("We just declared some variables. ProjectId should be an int...")
-    console.log(projectId)
-    console.log("And approval status should also be an int now...")
-    console.log(approvalStatus)
     return database.raw(`UPDATE projects
                         SET approval_status=(?),
                             approval_initials=(?)

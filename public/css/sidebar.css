@@ -1,10 +1,6 @@
 .sidebar {
-  /* width: 20%; */
   float: left;
-  /* background-color: #00B8EC; */
-  /* height: 10000px; */
   overflow: hidden;
-  /* color: white; */
   font-size: 18px;
   text-transform: uppercase;
   text-align: center;
@@ -24,14 +20,8 @@
 }
 
 .sidebar-nav {
-  /* padding: none; */
-  /* margin-top: 70%; */
   list-style: none;
   padding: initial;
-}
-
-sidebar a {
-  
 }
 
 .sidebar-links {
@@ -41,7 +31,6 @@ sidebar a {
   margin-right: auto;
   margin-top: 20%;
   color: #606060;
-  
 }
 
 .sidebar-links:hover {

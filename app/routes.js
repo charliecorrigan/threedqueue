@@ -103,9 +103,6 @@ module.exports = function(app, passport, fileUpload) {
 // *************************************
 
 app.get(baseAPI + '/projects/waiting-for-approval', isLoggedIn, (req, res) => {
-  console.log("In the api route.")
-  console.log("The following should be the current admin:")
-  console.log(req.user)
   Project.all(req.user, 'awaiting_approval')
     .then((data) => {
       if (data.rows.length < 1) {
@@ -117,7 +114,6 @@ app.get(baseAPI + '/projects/waiting-for-approval', isLoggedIn, (req, res) => {
 });
 
 app.get(baseAPI + '/projects/approved', isLoggedIn, (req, res) => {
-  console.log("In the approved api route. You are amazing.")
   Project.all(req.user, 'approved')
     .then((data) => {
       if (data.rows.length < 1) {
@@ -129,10 +125,6 @@ app.get(baseAPI + '/projects/approved', isLoggedIn, (req, res) => {
 });
 
 app.put(baseAPI + '/projects/:id', isLoggedIn, function(req, res) {
-  // res.render('dashboard.ejs', {
-  //   user : req.user
-  // });
-  console.log("In the put route. Good job!")
   Project.updateStatus(req.body.id, req.body.approval_initials, req.body.approval)
     .then(data => {
       if (data.rows.length < 1) {

@@ -18,10 +18,6 @@ class Admin {
   }
 
   static updateToken(id, token){
-    console.log("In the updateToken function. token is...")
-    console.log(token)
-    console.log("ID is...")
-    console.log(id)
     return database.raw(`UPDATE admins SET dbToken=(?) WHERE id=(?) RETURNING *`, [token, id])
   }
 
