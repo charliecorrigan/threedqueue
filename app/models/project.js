@@ -106,6 +106,27 @@ class Project {
     console.log("Here in the find customer function.")
     return database.raw(`SELECT * FROM customers WHERE email=(?)`, [email])
   }
+
+  static updateStatus(id, approvalInitials, status){
+    console.log("We're in update status function. Id is...")
+    console.log(id)
+    console.log("ApprovalInitials are...")
+    console.log(approvalInitials)
+    console.log("Status is...")
+    console.log(status)
+    const projectId = parseInt(id)
+    const approvalStatus = parseInt(status)
+    console.log("We just declared some variables. ProjectId should be an int...")
+    console.log(projectId)
+    console.log("And approval status should also be an int now...")
+    console.log(approvalStatus)
+    return database.raw(`UPDATE projects
+                        SET approval_status=(?),
+                            approval_initials=(?)
+                        WHERE id=(?)
+                        RETURNING *`,
+                      [approvalStatus, approvalInitials, projectId])
+  }
 }
 
 module.exports = Project;
