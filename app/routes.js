@@ -102,11 +102,23 @@ module.exports = function(app, passport, fileUpload) {
 //   PROTECTED ROUTES - API ENDPOINTS
 // *************************************
 
-app.get(baseAPI + '/projects/awaiting', isLoggedIn, (req, res) => {
+app.get(baseAPI + '/projects/waiting-for-approval', isLoggedIn, (req, res) => {
   console.log("In the api route.")
   console.log("The following should be the current admin:")
   console.log(req.user)
   Project.all(req.user, 'awaiting_approval')
+    .then((data) => {
+      if (data.rows.length < 1) {
+        res.send("404. The page you are looking for does not exist.", 404);
+      } else {
+        res.json(data.rows)
+      }
+    })
+});
+
+app.get(baseAPI + '/projects/approved', isLoggedIn, (req, res) => {
+  console.log("In the approved api route. You are amazing.")
+  Project.all(req.user, 'approved')
     .then((data) => {
       if (data.rows.length < 1) {
         res.send("404. The page you are looking for does not exist.", 404);
