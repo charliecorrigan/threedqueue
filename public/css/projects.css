@@ -156,6 +156,7 @@ a#paperclip-link {
   border: none;
   background-color: #F0F0F0;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .reject-initials {
@@ -167,4 +168,18 @@ a#paperclip-link {
   border: none;
   background-color: #F0F0F0;
   font-size: 16px;
+  cursor: pointer;
+}
+
+.listing-rejection {
+  cursor: pointer;
+}
+
+.listing-approval {
+  cursor: pointer;
+}
+
+.fa-comment-o {
+  cursor: pointer;
+  
 }
