@@ -1,5 +1,5 @@
-const environment = "development"
-// const environment = "production"
+// const environment = "development"
+const environment = "production"
 
 const baseApiUrl = {
   'production': "https://threedqueue.herokuapp.com/api/v1",
