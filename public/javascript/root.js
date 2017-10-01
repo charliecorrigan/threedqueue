@@ -9,6 +9,7 @@ $(document).ready(function(){
   })
   $('.index-card').on('click', function(){
     $('.more-details-container').children().hide()
-    $('.more-details-container').children(`#content-${this.id}`).show()
+    $('.more-details-container').children(`#content-${this.id}`).css('display', 'flex');
+    $('.more-details-container').children(`#content-${this.id}`).css('flex-flow', 'column nowrap')
   })
 });
