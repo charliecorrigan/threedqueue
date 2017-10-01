@@ -157,3 +157,14 @@ a#paperclip-link {
   background-color: #F0F0F0;
   font-size: 16px;
 }
+
+.reject-initials {
+  display:none;
+  text-align: right;
+}
+
+#reject-button {
+  border: none;
+  background-color: #F0F0F0;
+  font-size: 16px;
+}
