@@ -30,6 +30,8 @@ function projectTableHtml(project, comment, projectColor){
           </td>
           <td class="listing-approval" id="approve-${project.id}">
             <i class="fa fa-check fa-2x" aria-hidden="true" style="color: green;"></i>
+          </td>
+          <td class="listing-rejection" id="reject-${project.id}">
             <i class="fa fa-ban fa-2x" aria-hidden="true" style="color: red;"></i>
           </td>
           </tr>
