@@ -46,6 +46,7 @@ h2 {
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
   color: #606060;
 }
+
 /* **************************
          NAV BAR
 ***************************** */
@@ -102,6 +103,7 @@ nav li {
   font-size: 16px;
   width: 100%;
   box-sizing: border-box;
+  transition: background-color .25s;
 }
 
 a:hover {
