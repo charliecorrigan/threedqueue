@@ -124,6 +124,17 @@ app.get(baseAPI + '/projects/approved', isLoggedIn, (req, res) => {
     })
 });
 
+app.get(baseAPI + '/projects/rejected', isLoggedIn, (req, res) => {
+  Project.all(req.user, 'rejected')
+    .then((data) => {
+      if (data.rows.length < 1) {
+        res.send("404. The page you are looking for does not exist.", 404);
+      } else {
+        res.json(data.rows)
+      }
+    })
+});
+
 app.put(baseAPI + '/projects/:id', isLoggedIn, function(req, res) {
   Project.updateStatus(req.body.id, req.body.approval_initials, req.body.approval)
     .then(data => {
