@@ -10,6 +10,15 @@ function projectTableHtml(project, comment, projectColor){
               </form>
             </td>
           </tr>
+          <tr class="reject-initials" id="reject-${project.id}-form">
+          <td colspan="7">
+            <form>
+              <label>Initials</label>
+              <input type="text" class="form-control" name="initials" id="initials" required>
+              <button type="submit" value="Submit" id="reject-button"><i class="fa fa-ban fa-2x" aria-hidden="true" style="color: red;"></i></button>
+            </form>
+          </td>
+        </tr>
           <tr class="project-listing" id="approve-${project.id}-row">
           <td class="listing-date">
             ${project.created_at.substring(0, 10)}

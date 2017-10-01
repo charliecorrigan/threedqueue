@@ -108,6 +108,10 @@ class Project {
   static updateStatus(id, approvalInitials, status){
     const projectId = parseInt(id)
     const approvalStatus = parseInt(status)
+    console.log("OK. There are three params coming in. Id, approvalInitials, and status. They are:")
+    console.log(id)
+    console.log(approvalInitials)
+    console.log(status)
     return database.raw(`UPDATE projects
                         SET approval_status=(?),
                             approval_initials=(?)

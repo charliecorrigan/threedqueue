@@ -19,8 +19,9 @@ const assignColor = {
 
 $(document).ready(function(){
   openStatus(event, 'waiting-for-approval')
-  toggleComment();
+  toggleComment()
   listenForApprove()
+  listenForReject()
 });
 
 openStatus = function(event, status){
@@ -54,6 +55,30 @@ listenForApprove = function(){
       const id = event.target.closest('.approve-initials').id.split('-')[1];
       const initials = this.previousElementSibling.value;
       const params = {approval_initials: initials, approval: 1, id: id};
+      $.ajax({
+        type: "PUT",
+        url: baseApiUrl[environment] + '/projects/' + id,
+        data: params
+      }).then(function(result){
+        console.log("I think it posted, yo.")
+      }).catch(function(error){
+        console.log(error);
+      });
+    })
+  })
+}
+
+listenForReject = function(){
+  $("#projects-container").on('click', '.listing-rejection', function(){
+    const rowId = this.id.replace("reject", "approve")
+    $(`#${this.id}-form`).show();
+    $(`#${rowId}-row`).hide();
+    $("#projects-container").on('click', '#reject-button', function(){
+      event.preventDefault();
+      $(`#${event.target.closest('.reject-initials').id.split('-form')[0]}-form`).hide();
+      const id = event.target.closest('.reject-initials').id.split('-')[1];
+      const initials = this.previousElementSibling.value;
+      const params = {approval_initials: initials, approval: 2, id: id};
       $.ajax({
         type: "PUT",
         url: baseApiUrl[environment] + '/projects/' + id,
