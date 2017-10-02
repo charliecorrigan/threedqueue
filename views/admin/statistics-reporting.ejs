@@ -8,15 +8,7 @@
   </head>
 <body>
     <%- include ../navbar-user.ejs %>
-  <section class="sidebar">
-    <ul class="sidebar-nav">
-      <a href="/projects/new"><li class="sidebar-links">Create New Project</li></a>
-      <a href="/admin/manage-queue"><li class="sidebar-links">Manage Queue</li></a>
-      <a href="/admin/manage-projects"><li class="sidebar-links">Manage Projects</li></a>
-      <a href="/admin/manage-accounts"><li class="sidebar-links">Manage Accounts</li></a>
-      <a href="/admin/statistics-reporting"><li class="sidebar-links">Statistics</li></a>
-    </ul>
-  </section>
+    <%- include ../sidebar.ejs %>
   <div class="dashboard">
     <div class ="content-container">
       <h1>Stats and Reporting</h1>
