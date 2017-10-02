@@ -7,21 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
   </head>
 <body>
-  <nav>
-      <a href="/"><img id="logo" src="/images/3dqueue04.png"></a>
-    <ul>
-      <li><a href="/logout" class="navbar">Logout</a></li>
-    </ul>
-  </nav>
-  <section class="sidebar">
-    <ul class="sidebar-nav">
-      <a href="/projects/new"><li class="sidebar-links">Create New Project</li></a>
-      <a href="/admin/manage-queue"><li class="sidebar-links">Manage Queue</li></a>
-      <a href="/admin/manage-projects"><li class="sidebar-links">Manage Projects</li></a>
-      <a href="/admin/manage-accounts"><li class="sidebar-links">Manage Accounts</li></a>
-      <a href="/admin/statistics-reporting"><li class="sidebar-links">Statistics</li></a>
-    </ul>
-  </section>
+    <%- include ../navbar-user.ejs %>
+    <%- include ../sidebar.ejs %>
   <div class="dashboard">
     <div class ="content-container">
       <h1>Manage Queue</h1>
